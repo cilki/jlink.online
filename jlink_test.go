@@ -30,7 +30,7 @@ import (
 // Execute the "java --version" command on the generated runtime
 func assertJavaVersion(t *testing.T, output, version, platform string) {
 
-	checkOpenjdkVersion := regexp.MustCompile("(?m)AdoptOpenJDK \\(build " + regexp.QuoteMeta(version) + "\\)$")
+	checkOpenjdkVersion := regexp.MustCompile("(?m)AdoptOpenJDK \\(build " + regexp.QuoteMeta(version) + "\\)")
 
 	if LOCAL_PLATFORM == platform {
 		switch platform {
