@@ -15,6 +15,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"log"
 	"os/exec"
 	"path/filepath"
 	"regexp"
@@ -37,6 +38,7 @@ func assertJavaVersion(t *testing.T, output, version, platform string) {
 			out, err := exec.Command(filepath.FromSlash(output+"/jdk-"+version+"/bin/java.exe"), "--version").Output()
 			assert.NoError(t, err)
 
+			log.Println(string(out))
 			assert.True(t, checkOpenjdkVersion.MatchString(string(out)))
 		default:
 			out, err := exec.Command(filepath.FromSlash(output+"/jdk-"+version+"/bin/java"), "--version").Output()
